@@ -44,9 +44,7 @@
     </v-app-bar>
 
     <v-main>
-      <!--コンテンツを入れる
-        <router-view/>
-        -->
+      <router-view/>
     </v-main>
 
     <v-footer app

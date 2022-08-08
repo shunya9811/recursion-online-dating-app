@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import TopPage from '../pages/top-page.vue'
 
 Vue.use(VueRouter)
 
@@ -8,11 +8,12 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: TopPage
   },
   {
     path: '/user', //あとで'/'に変える
-    name: 'user-list'
+    name: 'user-list',
+    component: () => import(/* webpackChunkName: "about" */ '../pages/user-list.vue')
   },
   {
     path: '/user/id',
