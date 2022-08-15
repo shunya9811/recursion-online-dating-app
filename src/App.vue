@@ -12,12 +12,15 @@
         <v-divider></v-divider>
         <v-list dense nav>
           <v-list-item v-for="nav_list in nav_lists" :key="nav_list.name">
-            <v-list-item-icon>
-              <v-icon>{{ nav_list.icon }}</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>{{ nav_list.name }}</v-list-item-title>
-            </v-list-item-content>
+          <!--ナビゲーションのリンクをつける-->
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon>{{ nav_list.icon }}</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title>{{ nav_list.name }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
           </v-list-item>
         </v-list>
       </v-container>
@@ -29,7 +32,9 @@
       clipped-left
     >
       <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>Online Dating App</v-toolbar-title>
+      <v-toolbar-title v-if="isUserPage">{{ getUserById(id).name.first + " " + getUserById(id).name.last }}</v-toolbar-title>
+      <v-toolbar-title v-else-if="isMessageList">Message List</v-toolbar-title>
+      <v-toolbar-title v-else>Online Dating App</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -59,6 +64,7 @@
 </template>
 
 <script>
+//import { mapGetters } from 'vuex'
 
 export default {
   name: 'App',
@@ -66,9 +72,26 @@ export default {
   data: () => ({
     drawer: false,
     nav_lists: [
-      {name: 'User List',icon: 'mdi-account-group'},
-      {name: 'Message List',icon: 'mdi-email-edit'},
+      {name: 'User List', icon: 'mdi-account-group'},
+      {name: 'Message List', icon: 'mdi-email-edit'},
     ]
   }),
+  computed: {
+    id() {
+      return this.$route.params.id;
+    },
+    isMessageList() {
+      return this.$route.fullPath === '/message-list';
+    },
+    isUserPage() {
+      return this.id !== undefined;
+    },
+    //...mapGetters(['users/getUserById']),
+    getUserById: function(){
+      //modulesを使うときは呼び出し方、注意 actionとは違う
+      //this.$store.getters["moduleName/getterName"]
+      return this.$store.getters["users/getUserById"]
+    }
+  }
 };
 </script>
