@@ -38,7 +38,7 @@ export default {
                 })
         }
     },
-    getters: {
+    /*getters: {
         getMessageById: (state) => (userId) => {
             return state.messages.find((message) => message.userId === userId).chatLog
         },
@@ -48,5 +48,5 @@ export default {
         getChatedUser: (state) => {
             return state.message.map((message) => message.userId)
         }
-    }
+    }*/
 }

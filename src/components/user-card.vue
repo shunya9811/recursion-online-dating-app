@@ -3,7 +3,7 @@
         <v-row>
             <v-col v-for="user in users" 
                 :key="user.login.uuid" 
-                class="d-flex justify-content-center;"
+                class="d-flex justify-content-center"
                 cols="4"
             >
                 <v-card 
