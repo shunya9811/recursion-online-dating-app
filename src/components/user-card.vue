@@ -33,6 +33,7 @@
                             <v-btn 
                                 color="primary"
                                 class="my-3 mx-2 white--text"
+                                @click="createChatLog(id)"
                             >
                                 Message
                             </v-btn>
@@ -51,7 +52,17 @@ export default{
     computed: {
         users() {
             return this.$store.state.users.users
-        }
+        },
+        id() {
+            return this.$route.params.id;
+        },
+    },
+    methods: {
+        createChatLog(id) {
+            if (!(this.$store.state.messages.messages.some(message => message.userId === id))){
+                this.$store.commit('setMessages', id)
+            }
+        },
     }
 }
 </script>

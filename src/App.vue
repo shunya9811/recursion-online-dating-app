@@ -33,6 +33,7 @@
     >
       <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
       <v-toolbar-title v-if="isUserPage">{{ getUserById(id).name.first + " " + getUserById(id).name.last }}</v-toolbar-title>
+      <v-toolbar-title v-else-if="isUserListPage">User List</v-toolbar-title>
       <v-toolbar-title v-else-if="isMessageList">Message List</v-toolbar-title>
       <v-toolbar-title v-else>Online Dating App</v-toolbar-title>
 
@@ -72,8 +73,8 @@ export default {
   data: () => ({
     drawer: false,
     nav_lists: [
-      {name: 'User List', icon: 'mdi-account-group'},
-      {name: 'Message List', icon: 'mdi-email-edit'},
+      {name: 'User List', icon: 'mdi-account-group', to: '`/user`'},
+      {name: 'Message List', icon: 'mdi-email-edit', to: '`/message-list`'},
     ]
   }),
   computed: {
@@ -82,6 +83,9 @@ export default {
     },
     isMessageList() {
       return this.$route.fullPath === '/message-list';
+    },
+    isUserListPage() {
+      return this.$route.fullPath === '/user';
     },
     isUserPage() {
       return this.id !== undefined;

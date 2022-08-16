@@ -78,6 +78,7 @@
                     elevation="15"
                     class="ma-2 mt-8"
                     x-large
+                    @click="createChatLog(id)"
                 ><v-icon>mdi-email-edit</v-icon>Message
                 </v-btn>
             </router-link>
@@ -101,6 +102,13 @@ export default{
             return this.$store.getters["users/getUserById"]
         }
     },
+    methods: {
+        createChatLog(id) {
+            if (!(this.$store.state.messages.messages.some(message => message.userId === id))){
+                this.$store.commit('setMessages', id)
+            }
+        },
+    }
 }
 </script>
 

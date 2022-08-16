@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import  users  from './modules/users.js'
-//import messages from './modules/messages.js'
+import users from './modules/users.js'
+import messages from './modules/messages.js'
 
 
 Vue.use(Vuex)
@@ -20,6 +20,6 @@ export default new Vuex.Store({
   },
   modules: {
     users,
-    //messages
+    messages
   }
 })

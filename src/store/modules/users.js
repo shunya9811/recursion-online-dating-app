@@ -20,7 +20,7 @@ export default {
             })
         }
     },
-    getters:{
+    getters: {
         getUserById: (state) => (id) => {
             return state.users.find((user) => user.login.uuid === id);
         },
