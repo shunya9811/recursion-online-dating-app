@@ -10,15 +10,15 @@
                     <tbody>
                         <tr 
                             v-for="user in getChatedList"
-                            :key="user.id"
+                            :key="user.userId"
                             class="py-10"
-                            height="72px"
-                            @click="transitionToChatPage(user.id)"
+                            height="80px"
+                            @click="transitionToChatPage(user.userId)"
                         >
                             <td class="text-center" width="8%">
                                 <v-avatar>
                                     <img
-                                        :src="user.picture.large"
+                                        :src="user.picture"
                                         :alt="user.name"
                                     >
                                 </v-avatar>
@@ -61,7 +61,7 @@ export default{
             }
 
             chatedUserList.sort((a,b) => {
-                return new Date(a.timeStamp) - new Date(b.timeStamp)
+                return new Date(b.timeStamp) - new Date(a.timeStamp)
             })
 
             return chatedUserList
@@ -69,7 +69,7 @@ export default{
     },
     methods: {
         transitionToChatPage(userId){
-            return this.$router.push('/user/' + userId + '/chat/');
+            return this.$router.push('/user/' + userId + '/chat/')
         }
     }    
 }

@@ -105,7 +105,7 @@ export default{
     methods: {
         createChatLog(id) {
             if (!(this.$store.state.messages.messages.some(message => message.userId === id))){
-                this.$store.commit('setMessages', id)
+                this.$store.commit('messages/setMessages', id)
             }
         },
     }

@@ -17,36 +17,36 @@ export default {
         }
     },
     actions: {
-        getReply(commit, {userId, messageObj}) {
-            let params = new URLSearchParams()
+        getReply(context, {userId, messageObj}) {
+            let params = new FormData();
             params.append('apikey', 'DZZDMpzeEVRw6pzZF5O7oVWOwRVx5ZPj')
             params.append('query', messageObj.text)
 
             axios.post('https://api.a3rt.recruit.co.jp/talk/v1/smalltalk', params)
-                .then(response => response.json())
-                .then(data => {
+                .then(response => {
                     let replyObj ={
                         me : false,
-                        text : data.results[0].reply,
+                        text : response.data.results[0].reply,
                         timeStamp : messageObj.timeStamp
                     }
 
-                    commit('addChatLog', {
+                    context.commit('addChatLog', {
                         userId : userId,
                         messageObj : replyObj
                     })
                 })
+                
         }
     },
-    /*getters: {
+    getters: {
         getMessageById: (state) => (userId) => {
             return state.messages.find((message) => message.userId === userId).chatLog
         },
-        getLastChat: (state, getters) => (userId) => {
+        /*getLastChat: (state, getters) => (userId) => {
             return getters.getMessageById(userId).slice(-1)[0]
         },
         getChatedUser: (state) => {
             return state.message.map((message) => message.userId)
-        }
-    }*/
+        }*/
+    }
 }

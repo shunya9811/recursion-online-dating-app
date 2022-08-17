@@ -1,6 +1,13 @@
 <template>
     <div class="chat-screen">
-        <chat-log></chat-log>
+        <v-card 
+            flat
+            max-height="75vh" 
+            height="75vh"
+            class="overflow-y-auto"
+        >
+            <chat-log></chat-log>
+        </v-card>
         <v-footer>
             <v-row>
                 <v-text-field
@@ -71,7 +78,7 @@ export default{
                     timeStamp : timeStamp
                 }
 
-                this.$store.commit('addChatLog', {
+                this.$store.commit('messages/addChatLog', {
                     userId: userId, 
                     messageObj: messageObj
                 })
