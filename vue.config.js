@@ -1,6 +1,6 @@
 module.exports = {
   outputDir: 'docs',
   assetsDir: './',
-  publicPath: './',
+  publicPath: '/recursion-online-dating-app',
   transpileDependencies: ['vuetify'],
 };
