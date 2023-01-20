@@ -5,6 +5,7 @@
             max-height="75vh" 
             height="75vh"
             class="overflow-y-auto"
+            id="chatArea"
         >
             <chat-log></chat-log>
         </v-card>

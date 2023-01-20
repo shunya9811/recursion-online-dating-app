@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 export default {
     namespaced: true,
     state: {
@@ -13,11 +11,8 @@ export default {
         }
     },
     actions: {
-        getUsers: function({commit}) {
-            return axios.get('https://randomuser.me/api/?results=9')
-                .then(response => {
-                    commit('setUsers', response.data)
-            })
+        getUsers: function({commit}, payload) {
+            commit('setUsers', payload)
         }
     },
     getters: {

@@ -34,6 +34,13 @@ export default {
                         userId : userId,
                         messageObj : replyObj
                     })
+
+                    
+                })
+                /*非同期をチェーンすることで、非同期処理後に処理させられる */
+                .then(() => {
+                    let chatArea = document.getElementById("chatArea")
+                    chatArea.scrollTop = chatArea.scrollHeight
                 })
                 
         }
@@ -42,7 +49,8 @@ export default {
         getMessageById: (state) => (userId) => {
             return state.messages.find((message) => message.userId === userId).chatLog
         },
-        /*getLastChat: (state, getters) => (userId) => {
+        /* message-listコンポーネントでの処理に変更した
+        getLastChat: (state, getters) => (userId) => {
             return getters.getMessageById(userId).slice(-1)[0]
         },
         getChatedUser: (state) => {
