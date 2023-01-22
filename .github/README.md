@@ -1,25 +1,26 @@
-# online-dating-app
+# Online Dating App
+
+コンピュータサイエンス学習プラットフォーム Recursion のvueコースの課題として作成したプロジェクト「Online Dating App」です
+
+## プロジェクトの概要
+
+オンラインで人を探してメッセージを送り合うことのできるアプリです。
+ユーザー一覧ページから、ユーザーのプロフィールを閲覧して、メッセージを送ることができるできる
+マッチングアプリ形式となっています。
+
+## Demo
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/64852663/213925009-d009b652-c959-4703-aca0-3d3ab79d5842.gif)
+
+
+## URL
+
 https://shunya9811.github.io/recursion-online-dating-app/
 
-## Project setup
-```
-npm install
-```
+## 使用したAPI
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+ランダムなユーザーを取得するために
+https://randomuser.me/
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+メッセージを自動生成するために
+https://a3rt.recruit.co.jp/product/talkAPI/
